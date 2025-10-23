@@ -10,14 +10,43 @@
 <body class="bg-pink-100 grid h-screen">
     <div class="bg-pink-200 rounded-2xl shadow-lg w-1/2 place-self-center grid p-10">
         <h1 class="place-self-center text-4xl italic mb-5">
-            Super Love Count Saver
+            Super Love Counter
         </h1>
-        <span class="text-9xl place-self-center mb-5"> 0 </span>
-        <div class="flex space-x-5 w-full">
-            <button class="rounded-lg bg-green-300 text-4xl w-1/12"> + </button>
-            <button class="rounded-lg bg-red-500 text-4xl w-1/5"> - </button>
+        <span class="text-9xl place-self-center mb-5" id="counter"> 0 </span>
+        <div class="flex space-x-5 w-full flex justify-center mb-10">
+            <button class="rounded-lg bg-green-300 text-4xl w-1/6" id="add"> + </button>
+            <button class="rounded-lg bg-red-500 text-4xl w-1/6" id="minus"> - </button>
         </div>
-        <button class="rounded-lg bg-pink-400 place-self-center"> Save </button>
+        <button class="rounded-lg bg-pink-400 place-self-center text-4xl w-1/3 p-2" id="love"> ❤ </button>
+        <h1 class="place-self-center m-5 text-3xl" id="result"></h1>
     </div>
+    <script>
+        let score = 0;
+        let add = document.getElementById("add")
+        let minus = document.getElementById("minus")
+        let counter = document.getElementById("counter")
+        let love = document.getElementById("love")
+        let result = document.getElementById("result")
+
+        add.addEventListener("click", ()=>{
+            score++;
+            counter.textContent = score;
+        })
+
+        minus.addEventListener("click", ()=>{
+            if(score > 0){
+                score--;
+                counter.textContent = score;
+            }
+        })
+
+        love.addEventListener("click", ()=>{
+            if(score == 0){
+                result.textContent = "💔";
+            }else{
+                result.textContent = "❤".repeat(score);
+            }
+        })
+    </script>
 </body>
 </html>
